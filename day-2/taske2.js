@@ -9,19 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('prime').addEventListener("input", (e) => {
         var a = e.target.value;
-        a = Number(a);
-        count = 0;
-        var b = a;
-        for (; b > 0; b--) {
+        var count = 0;
+        if (a < 0) {
+            return;
+        }
+        for (var b = a; b > 0; b--) {
             if (a % b == 0) {
                 count++;
             }
+            if (count > 2) {
+                break;
+            }
         }
-        console.log(count);
         if (count == 2) {
             document.getElementById('ans').innerHTML = `${a} is prime number`;
         } else {
-            document.getElementById('ans').innerHTML = `${a} is not a prime number`;
+            document.getElementById('ans').innerHTML = `${a ? a : "0"} is not a prime number`;
         }
     });
 });
