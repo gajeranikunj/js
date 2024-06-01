@@ -10,7 +10,11 @@ document.getElementById('prime').addEventListener("input", (e) => {
     if (a < 0) {
         return;
     }
-    for (var b = a; b > 0; b--) {
+
+
+
+    
+            for (var b = a; b > 0; b--) {
         if (a % b == 0) {
             count++;
         }

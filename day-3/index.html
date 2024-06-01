@@ -4,11 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="./cal.css">
 </head>
 
 <body>
-    <input type="text" id="enternum">
-    <input type="number" id="ans">
+
+    <div class="all-cal">
+        <input type="text" id="enternum" disabled>
+        <input type="number" id="ans" disabled>
+        <div class="btn-bord">
+            <div class="btn" onclick="data(null,'7')">7</div>
+            <div class="btn" onclick="data(null,'8')">8</div>
+            <div class="btn" onclick="data(null,'9')">9</div>
+            <div class="btn" onclick="data(null,'*')">X</div>
+
+            <div class="btn" onclick="data(null,'4')">4</div>
+            <div class="btn" onclick="data(null,'5')">5</div>
+            <div class="btn" onclick="data(null,'6')">6</div>
+            <div class="btn" onclick="data(null,'/')">&#x2797;</div>
+
+            <div class="btn" onclick="data(null,'1')">1</div>
+            <div class="btn" onclick="data(null,'2')">2</div>
+            <div class="btn" onclick="data(null,'3')">3</div>
+            <div class="btn" onclick="data(null,'-')">-</div>
+
+            <div class="btn" onclick="data(null,'0')">0</div>
+            <div class="btn" onclick="data(null,'00')">00</div>
+            <div class="btn" onclick="data(null,'.')">.</div>
+            <div class="btn" onclick="data(null,'+')">+</div>
+
+        </div>
+    </div>
     <script src="./cal.js"></script>
 </body>
 

@@ -1,27 +1,41 @@
-document.addEventListener("keypress", (e) => {
-    console.log("Key pressed:", e.key);
+document.addEventListener("keydown", (event) => {
+    var KeyID = event.keyCode;
+    switch (KeyID) {
+        case 8:
+            var tamp = document.getElementById("enternum").value;
+            tamp = tamp.slice(0, tamp.length - 1)
+            document.getElementById("enternum").value = tamp
+            break;
+        case 46:
+            document.getElementById("enternum").value = "";
+            break;
+        default:
+            break;
+    }
+    data(event)
+});
 
-    var input = e.key;
-    var validInput = /^[0-9+\-*/]*$/.test(input);
+function data(e, sva) {
+
+
+    if (e.key[0]=="F") {
+      return;  
+    } 
+    var input;
+    if (sva == undefined) {
+        input = e.key;
+    } else {
+        input = sva;
+    }
+    var validInput = /^[0-9+\-*/.]*$/.test(input);
     if (!validInput) {
-        input = input.replace(/[^0-9+\-*/]/g, "");
+        input = input.replace(/[^0-9+\-*/.]/g, "");
     }
 
     document.getElementById("enternum").value += input;
-});
 
-
-
-document.getElementById("enternum").addEventListener("input", (e) => {
-
-    // Remove invalid characters
-    var input = e.target.value;
-    var validInput = /^[0-9+\-*/]*$/.test(input);
-    if (!validInput) {
-        input = e.target.value = input.replace(/[^0-9+\-*/]/g, "");
-    }
     // -----------------------------------------------------------------------------------------------------
-    var arr = e.target.value;
+    var arr = document.getElementById("enternum").value;
     var copy = arr.split("");
     var subl = "";
     copy.forEach((sub) => {
@@ -52,5 +66,5 @@ document.getElementById("enternum").addEventListener("input", (e) => {
         }
     }
     document.getElementById("ans").value = ans;
-})
+}
 

@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.all-cal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 300px;
+    border: 1px solid black;
+}
+
+.all-cal>input {
+    width: 90%;
+    margin: 5px;
+}
+.btn-bord{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px ;
+}
+.btn-bord>.btn{
+    outline: 1px solid black;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
