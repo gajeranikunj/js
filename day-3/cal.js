@@ -17,9 +17,10 @@ document.addEventListener("keydown", (event) => {
 
 function data(e, sva) {
 
-
-    if (e.key[0] == "F") {
-        return;
+    if (e != null) {
+        if (e.key[0] == "F") {
+            return;
+        }
     }
 
     var input;
@@ -28,6 +29,7 @@ function data(e, sva) {
         input = e.key;
     } else {
         input = sva;
+        console.log("hi");
     }
 
     var validInput = /^[0-9+\-*/.]*$/.test(input);
@@ -64,7 +66,7 @@ function data(e, sva) {
             subl = subl + sub;
         }
     })
- 
+
     subl = subl.split("")
     arr = arr.split(/[\s+\s-\s*\s/]+/);
     for (var tam in arr) {
