@@ -29,7 +29,6 @@ function data(e, sva) {
         input = e.key;
     } else {
         input = sva;
-        console.log("hi");
     }
 
     var validInput = /^[0-9+\-*/.]*$/.test(input);

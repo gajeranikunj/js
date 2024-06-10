@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .flex>div {
+            width: 150px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            font-size: 30px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div style="background-color: red;" onclick="document.body.style.backgroundColor='red'">red</div>
+        <div style="background-color: blue;" onclick="document.body.style.backgroundColor='blue'">blue</div>
+        <div style="background-color: black;" onclick="document.body.style.backgroundColor='black'">black</div>
+        <div style="background-color: aqua;" onclick="document.body.style.backgroundColor='aqua'">aqua</div>
+        <div style="background-color: blueviolet;" onclick="document.body.style.backgroundColor='blueviolet'">blueviolet
+        </div>
+        <input type="color" id="box">
+    </div>
+    <script>
+        document.getElementById("box").addEventListener("input", (e) => {
+            document.body.style.backgroundColor = e.target.value;
+        });
+    </script>
+</body>
+
+</html>

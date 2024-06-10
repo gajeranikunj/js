@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show {
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            width: 40%;
+            flex-wrap: wrap;
+        }
+
+        .show>img {
+            width: 45%;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        .show_2 {
+            width: 40%;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            margin-top: 10PX;
+        }
+
+        .show_2>div {
+            width: 45%;
+            text-align: center;
+        }
+
+        .control {
+            margin: auto;
+            width: 40%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .control>img {
+            border: 1px solid black;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        .score {
+            width: 40%;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .score>div {
+            font-size: 23px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show">
+        <img src="./IMG/start.jpg" alt="" id="user">
+        <img src="./IMG/start.jpg" alt="" id="ai">
+    </div>
+    <div class="show_2">
+        <div>PLYER</div>
+        <div>AI</div>
+    </div>
+    <div class="control">
+        <img src="./IMG/S1.jpg" alt="" onclick="pl(this)" name="stone">
+        <img src="./IMG/P1.jpg" alt="" onclick="pl(this)" name="paper">
+        <img src="./IMG/C1.jpg" alt="" onclick="pl(this)" name="scissors">
+    </div>
+    <div class="score">
+        <div id="user_s"></div>
+        <div id="AI-s"></div>
+    </div>
+    <script src="./spc.js"></script>
+</body>
+
+</html>
