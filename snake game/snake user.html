@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 700px;
+            height: 700px;
+            border: 1px solid black;
+            margin-top: 30px;
+            background-image: url(img/bgimg.jpg);
+            background-size: cover;
+            position: relative;
+        }
+
+        .trmebox {
+            width: 70px;
+            height: 70px;
+            border: 1px solid black;
+            margin-top: 10px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .set {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .user {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .show-box {
+                width: 40px;
+                height: 40px;
+                background-color: blue;
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="set">
+
+        <div class="main">
+            <div class="user" id="user-box">
+                <div class="show-box">
+                    user
+                </div>
+            </div>
+
+        </div>
+        <button class="trmebox" id="btn" onclick="tarm(this)">
+
+        </button>
+    </div>
+
+    <script>
+        var x = 1;
+        var y = 1;
+        var posesan = 1;
+        var time = .5;
+        var tog = true;
+        var fast_time = true;
+
+        function getx_y(posesan) {
+            x = 1;
+            y = 1;
+            for (let index = 1; index <= posesan; index++) {
+                if ((index % 10 == 1) && (index != 1)) {
+                    y++;
+                } else if (index != 1) {
+                    if (tog) {
+                        x++;
+                    } else {
+                        x--;
+                    }
+                }
+
+                if (x == 1) {
+                    tog = true
+                } else if (x == 10) {
+                    tog = false;
+                }
+            }
+        }
+        getx_y(posesan)
+        move(x, y)
+
+
+
+
+        var genrat;
+        function tarm(params) {
+            document.getElementById("btn").disabled = true;
+            genrat = Math.floor(Math.random() * 6 + 1)
+            params.innerHTML = genrat;
+            if (fast_time) {
+                genrat--;
+                fast_time = false;
+            }
+            console.log(posesan + genrat);
+            if ((posesan + genrat <= 100)) {
+                setmove();
+            }
+
+            if (genrat != undefined) {
+                opena = true;
+                document.querySelector(".show-box").style.width = "50px";
+                document.querySelector(".show-box").style.height = "50px";
+            }
+            setTimeout(() => {
+                stare(posesan)
+            }, genrat * 500);
+        }
+
+        var tarn = 0
+        var up = 1;
+        function setmove(count = 1) {
+            if (count <= genrat) {
+                posesan++;
+                getx_y(posesan)
+                setTimeout(() => {
+                    move(x, y);
+                    setmove(count + 1);
+                }, count * 100);
+            }
+        }
+
+        function move(x, y, str = undefined) {
+            document.getElementById("user-box").style.bottom = (((y - 1) * 70) + "px");
+            document.getElementById("user-box").style.left = (((x - 1) * 70) + "px");
+            document.getElementById("user-box").style.transition = ((str == undefined ? time : str) + "s")
+        }
+        var str = .7;
+
+
+        function stare(params, time) {
+            if (posesan == 1) {
+                getx_y(38)
+                move(x, y, str)
+                posesan = 38;
+
+            }
+            else if (posesan == 4) {
+                getx_y(14)
+                move(x, y, str)
+                posesan = 14;
+            }
+            else if (posesan == 8) {
+                getx_y(30)
+                posesan = 30;
+                move(x, y, str)
+            } else if (posesan == 21) {
+                getx_y(42)
+                posesan = 42;
+                move(x, y, str)
+            }
+            else if (posesan == 28) {
+                getx_y(76)
+                posesan = 76;
+                move(x, y, str)
+            }
+            else if (posesan == 50) {
+                getx_y(67)
+                posesan = 67;
+                move(x, y, str)
+            }
+            else if (posesan == 71) {
+                getx_y(92)
+                posesan = 92;
+                move(x, y, str)
+            } else if (posesan == 80) {
+                getx_y(99)
+                posesan = 99;
+                move(x, y, str)
+            }
+            // for snake
+            else if (posesan == 32) {
+                getx_y(10)
+                posesan = 10;
+                move(x, y, str)
+            } else if (posesan == 36) {
+                getx_y(6)
+                posesan = 6;
+                move(x, y, str)
+            } else if (posesan == 48) {
+                getx_y(26)
+                posesan = 26;
+                move(x, y, str)
+            } else if (posesan == 62) {
+                getx_y(18)
+                posesan = 18;
+                move(x, y, str)
+            }
+            else if (posesan == 88) {
+                getx_y(24)
+                posesan = 24;
+                move(x, y, str)
+            } else if (posesan == 95) {
+                getx_y(56)
+                posesan = 56;
+                move(x, y, str)
+            } else if (posesan == 97) {
+                getx_y(78)
+                posesan = 78;
+                move(x, y, str)
+            }
+            setTimeout(() => {
+                document.getElementById("btn").disabled = false;
+                console.log(posesan);
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>

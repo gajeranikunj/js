@@ -15,10 +15,20 @@
         }
 
         .show>img {
-            width: 45%;
             height: 200px;
-            border: 1px solid black;
         }
+
+        #user {
+            rotate: 60deg;
+            animation: .5s ease-in-out 3;
+        }
+
+        #ai {
+            rotate: -60deg;
+            animation: .5s ease-in-out 3;
+        }
+
+
 
         .show_2 {
             width: 40%;
@@ -29,7 +39,7 @@
         }
 
         .show_2>div {
-            width: 45%;
+            width: 200px;
             text-align: center;
         }
 
@@ -57,22 +67,50 @@
             font-size: 23px;
             margin-top: 10px;
         }
+
+        @keyframes sheak1 {
+            0% {
+                rotate: 60deg;
+            }
+
+            50% {
+                rotate: 0deg;
+            }
+
+            100% {
+                rotate: 60deg;
+            }
+        }
+
+        @keyframes sheak2 {
+            0% {
+                rotate: -60deg;
+            }
+
+            50% {
+                rotate: 0deg;
+            }
+
+            100% {
+                rotate: -60deg;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="show">
-        <img src="./IMG/start.jpg" alt="" id="user">
-        <img src="./IMG/start.jpg" alt="" id="ai">
+        <img src="./IMG/start.png" alt="" id="user">
+        <img src="./IMG/start.png" alt="" id="ai">
     </div>
     <div class="show_2">
         <div>PLYER</div>
         <div>AI</div>
     </div>
     <div class="control">
-        <img src="./IMG/S1.jpg" alt="" onclick="pl(this)" name="stone">
-        <img src="./IMG/P1.jpg" alt="" onclick="pl(this)" name="paper">
-        <img src="./IMG/C1.jpg" alt="" onclick="pl(this)" name="scissors">
+        <img src="./IMG/S1.png" alt="" onclick="pl(this)" name="stone">
+        <img src="./IMG/P1.png" alt="" onclick="pl(this)" name="paper">
+        <img src="./IMG/C1.png" alt="" onclick="pl(this)" name="scissors">
     </div>
     <div class="score">
         <div id="user_s"></div>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 700px;
+            height: 700px;
+            border: 1px solid black;
+            margin-top: 30px;
+            background-image: url(img/bgimg.jpg);
+            background-size: cover;
+            position: relative;
+        }
+
+        .trmebox {
+            width: 70px;
+            height: 70px;
+            border: 1px solid black;
+            margin-top: 10px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .set {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .user {
+            width: 67px;
+            height: 67px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .show-box {
+                width: 40px;
+                height: 40px;
+                background-color: blue;
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="set">
+
+        <div class="main">
+            <div class="user" id="user-box">
+                <div class="show-box">
+                    user
+                </div>
+            </div>
+            <div class="user" id="AI">
+                <div class="show-box">
+                    AI
+                </div>
+            </div>
+
+        </div>
+        <button class="trmebox" id="btn" onclick="showg()">
+            start
+        </button>
+        <button onclick="location.reload();">restart</button>
+    </div>
+
+    <script>
+        var x = 1;
+        var y = 1;
+        var posesanu = 1;
+        var posesanuAI = 1;
+        var time = .5;
+        var tog = true;
+        var fast_timeu = true;
+        var fast_timeai = true;
+
+
+        var tarmep = true
+
+
+
+
+        function getx_y(posesan) {
+            x = 1;
+            y = 1;
+            for (let index = 1; index <= posesan; index++) {
+                if ((index % 10 == 1) && (index != 1)) {
+                    y++;
+                } else if (index != 1) {
+                    if (tog) {
+                        x++;
+                    } else {
+                        x--;
+                    }
+                }
+
+                if (x == 1) {
+                    tog = true
+                } else if (x == 10) {
+                    tog = false;
+                }
+            }
+        }
+        getx_y(tarmep ? posesanu : posesanuAI)
+        move(x, y)
+        tarmep = false;
+        move(x, y)
+        tarmep = true;
+        var genrat;
+
+
+
+        function showg() {
+            document.getElementById("btn").disabled = true;
+            if (tarmep) {
+                document.getElementById("btn").style.border = "1px solid green";
+                document.getElementById("btn").style.boxShadow = "0px 0px 10px green";
+            } else {
+                document.getElementById("btn").style.border = "1px solid red";
+                document.getElementById("btn").style.boxShadow = "0px 0px 10px red";
+            }
+            var item = Math.floor(Math.random() * 6 + 1);
+            for (let index = 1; index <= 5; index++) {
+                setTimeout(() => {
+                    document.getElementById("btn").innerHTML = Math.floor(Math.random() * 6 + 1);
+                    if (index == 5) {
+                        document.getElementById("btn").innerHTML = item;
+                        tarm(item);
+                    }
+                }, 100 * index);
+            }
+        }
+
+        function tarm(params) {
+
+            genrat = params;
+            // console.log(genrat);
+            if (tarmep) {
+                if (fast_timeu) {
+                    genrat--;
+                    fast_timeu = false;
+                }
+            } else {
+                if (fast_timeai) {
+                    genrat--;
+                    fast_timeai = false;
+                }
+            }
+            if (((tarmep ? posesanu + genrat : posesanuAI + genrat) <= 100)) {
+                setmove();
+                if (genrat != undefined) {
+                    opena = true;
+                    document.querySelectorAll(".show-box")[tarmep ? 0 : 1].style.width = "50px";
+                    document.querySelectorAll(".show-box")[tarmep ? 0 : 1].style.height = "50px";
+                }
+                setTimeout(() => {
+                    stare(tarmep ? posesanu : posesanuAI)
+                }, genrat * 500);
+            }
+        }
+
+        var tarn = 0
+        var up = 1;
+        function setmove(count = 1) {
+            if (count <= genrat) {
+                tarmep ? posesanu++ : posesanuAI++;
+                getx_y(tarmep ? posesanu : posesanuAI)
+                setTimeout(() => {
+                    move(x, y);
+                    setmove(count + 1);
+                }, count * 100);
+            }
+        }
+
+        function move(x, y, str = undefined) {
+            document.getElementById((tarmep ? "user-box" : "AI")).style.bottom = (((y - 1) * 70) + "px");
+            document.getElementById((tarmep ? "user-box" : "AI")).style.left = (((x - 1) * 70) + "px");
+            document.getElementById((tarmep ? "user-box" : "AI")).style.transition = ((str == undefined ? time : str) + "s")
+        }
+        var str = .7;
+
+
+        function stare(params, time) {
+            // console.log((tarmep ? posesanu : posesanuAI) == 1);
+            if ((tarmep ? posesanu : posesanuAI) == 1) {
+                getx_y(38);
+                move(x, y, str);
+                tarmep ? posesanu = 38 : posesanuAI = 38;
+            } else if ((tarmep ? posesanu : posesanuAI) == 4) {
+                getx_y(14);
+                move(x, y, str);
+                tarmep ? posesanu = 14 : posesanuAI = 14;
+            } else if ((tarmep ? posesanu : posesanuAI) == 8) {
+                getx_y(30);
+                move(x, y, str);
+                tarmep ? posesanu = 30 : posesanuAI = 30;
+            } else if ((tarmep ? posesanu : posesanuAI) == 21) {
+                getx_y(42);
+                move(x, y, str);
+                tarmep ? posesanu = 42 : posesanuAI = 42;
+            } else if ((tarmep ? posesanu : posesanuAI) == 28) {
+                getx_y(76);
+                move(x, y, str);
+                tarmep ? posesanu = 76 : posesanuAI = 76;
+            } else if ((tarmep ? posesanu : posesanuAI) == 50) {
+                getx_y(67);
+                move(x, y, str);
+                tarmep ? posesanu = 67 : posesanuAI = 67;
+            } else if ((tarmep ? posesanu : posesanuAI) == 71) {
+                getx_y(92);
+                move(x, y, str);
+                tarmep ? posesanu = 92 : posesanuAI = 92;
+            } else if ((tarmep ? posesanu : posesanuAI) == 80) {
+                getx_y(99);
+                move(x, y, str);
+                tarmep ? posesanu = 99 : posesanuAI = 99;
+            }
+            // for snake
+            else if ((tarmep ? posesanu : posesanuAI) == 32) {
+                getx_y(10);
+                move(x, y, str);
+                tarmep ? posesanu = 10 : posesanuAI = 10;
+            } else if ((tarmep ? posesanu : posesanuAI) == 36) {
+                getx_y(6);
+                move(x, y, str);
+                tarmep ? posesanu = 6 : posesanuAI = 6;
+            } else if ((tarmep ? posesanu : posesanuAI) == 48) {
+                getx_y(26);
+                move(x, y, str);
+                tarmep ? posesanu = 26 : posesanuAI = 26;
+            } else if ((tarmep ? posesanu : posesanuAI) == 62) {
+                getx_y(18);
+                move(x, y, str);
+                tarmep ? posesanu = 18 : posesanuAI = 18;
+            } else if ((tarmep ? posesanu : posesanuAI) == 88) {
+                getx_y(24);
+                move(x, y, str);
+                tarmep ? posesanu = 24 : posesanuAI = 24;
+            } else if ((tarmep ? posesanu : posesanuAI) == 95) {
+                getx_y(56);
+                move(x, y, str);
+                tarmep ? posesanu = 56 : posesanuAI = 56;
+            } else if ((tarmep ? posesanu : posesanuAI) == 97) {
+                getx_y(78);
+                move(x, y, str);
+                tarmep ? posesanu = 78 : posesanuAI = 78;
+            }
+
+            setTimeout(() => {
+                if (tarmep) {
+                    document.getElementById("btn").disabled = false;
+                    document.getElementById("btn").style.border = "1px solid green";
+                    document.getElementById("btn").style.boxShadow = "0px 0px 10px green";
+                }
+            }, 500);
+
+            if (posesanu >= 100) {
+                alert("user win")
+                location.reload()
+            } else if (posesanuAI >= 100) {
+                alert("ai win")
+                location.reload()
+            }
+            tarmep = !tarmep;
+            if (tarmep == false) {
+                setTimeout(() => {
+                    showg()
+                }, 1000);
+            }
+            // console.log(document.querySelectorAll(".show-box")[0].style);
+            if (posesanu == posesanuAI) {
+                document.querySelectorAll(".show-box")[0].style.width = "40px";
+                document.querySelectorAll(".show-box")[0].style.height = "40px";
+                document.querySelectorAll(".show-box")[1].style.width = "40px";
+                document.querySelectorAll(".show-box")[1].style.height = "40px";
+                document.getElementsByClassName("user")[0].style.display = "block"
+                document.getElementsByClassName("user")[1].style.alignItems = "flex-end";
+                document.getElementsByClassName("user")[1].style.justifyContent = "flex-end";
+            } else {
+                document.querySelectorAll(".show-box")[0].style.width = "50px";
+                document.querySelectorAll(".show-box")[0].style.height = "50px";
+                document.querySelectorAll(".show-box")[1].style.width = "50px";
+                document.querySelectorAll(".show-box")[1].style.height = "50px";
+                document.getElementsByClassName("user")[0].style.display = "flex"
+                document.getElementsByClassName("user")[1].style.alignItems = "center";
+                document.getElementsByClassName("user")[1].style.justifyContent = "center";
+            }
+        }
+        document.querySelectorAll(".show-box")[0].style.width = "40px";
+        document.querySelectorAll(".show-box")[0].style.height = "40px";
+        document.querySelectorAll(".show-box")[1].style.width = "40px";
+        document.querySelectorAll(".show-box")[1].style.height = "40px";
+        document.getElementsByClassName("user")[0].style.display = "block"
+        document.getElementsByClassName("user")[1].style.alignItems = "flex-end";
+        document.getElementsByClassName("user")[1].style.justifyContent = "flex-end";
+    </script>
+</body>
+
+</html>
